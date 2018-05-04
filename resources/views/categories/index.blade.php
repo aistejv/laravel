@@ -1,6 +1,11 @@
 @extends('layout.master')
 
 @section('content')
+  @if(session('success'))
+      <div class="alert alert-success col-sm-4 my-5">
+        {{session('success')}}
+      </div>
+  @endif
 
   {{-- <div class="row">
   @foreach($categories as $category)
@@ -29,6 +34,7 @@
     <tbody>
       <tr>
         <td>{{$category->name}}</td>
+        <td><a href="{{route('one.category', $category->id)}}" class="btn btn-outline-dark">Find Out More!</a></td>
       </tr>
     </tbody>
   @endforeach

@@ -16,15 +16,15 @@
     </div>
     @auth
     <div class="col-md-8">
-    <a class="btn btn-outline-dark" href="{{route('product.edit', $product)}}" role="button">Edit product</a>
+      <a class="btn btn-outline-dark" href="{{route('product.edit', $product)}}" role="button">Edit product</a>
     </div>
     <div class="col-md-8">
-    <form method="POST" action="{{route('product.delete', $product)}}">
-      @method('DELETE')
-      @csrf
-    <button type="submit" class="btn btn-outline-dark" href="#" role="button">Delete product</button>
-  </form>
-</div>
+      <form method="POST" action="{{route('product.delete', $product)}}">
+        @method('DELETE')
+        @csrf
+      <button type="submit" class="btn btn-outline-dark" href="#" role="button">Delete product</button>
+      </form>
+    </div>
 @endauth
 </div>
 @endsection

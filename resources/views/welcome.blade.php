@@ -2,6 +2,12 @@
 
   @section('content')
 
+    @if(session('success'))
+        <div class="alert alert-danger col-sm-2 my-5">
+          {{session('success')}}
+        </div>
+    @endif
+
 
 
     <!-- Header with Background Image -->

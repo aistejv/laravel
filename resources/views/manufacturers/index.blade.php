@@ -1,6 +1,11 @@
 @extends('layout.master')
 
 @section('content')
+  @if(session('success'))
+      <div class="alert alert-success col-sm-4 my-5">
+        {{session('success')}}
+      </div>
+  @endif
 
   {{-- <div class="row">
     @foreach($manufacturers as $manufacturer)
@@ -34,10 +39,23 @@
       <tr>
         <td>{{$manufacturer->name}}</td>
         <td>{{$manufacturer->country}}</td>
+        <td><a href="{{route('one.manufacturer', $manufacturer->id)}}" class="btn btn-outline-dark">Find Out More!</a></td>
       </tr>
     </tbody>
+
   @endforeach
   </table>
 </div>
 </div>
+
+{{-- <div class="col-md-8">
+  <a class="btn btn-outline-dark" href="#" role="button">Edit manufacturer</a>
+</div>
+<div class="col-md-8">
+  <form method="POST" action="{{route('manufacturer.delete', $manufacturer)}}">
+    @method('DELETE')
+    @csrf
+  <button type="submit" class="btn btn-outline-dark" href="#" role="button">Delete manufacturer</button>
+  </form>
+</div> --}}
 @endsection

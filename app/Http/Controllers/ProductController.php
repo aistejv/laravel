@@ -26,12 +26,15 @@ class ProductController extends Controller
   }
 
   public function create(){
+    $this->authorize('create', Product::class);
     $manufacturers = Manufacturer::all();
     $categories = Category::all();
     return view('products.create', compact('manufacturers', 'categories'));
   }
 
   public function store(StoreProductRequest $request){
+
+    $this->authorize('create', Product::class);
     // dd($request);
     //budas 1
     // $product = new Product();
@@ -76,18 +79,21 @@ class ProductController extends Controller
     }
 
     public function delete(Product $product){
+      $this->authorize('delete', Product::class);
       Product::findorfail($product->id)->delete();
       return redirect()->route('all.products')->with('success', 'Product deleted successfully!');
 
     }
 
     public function edit(Product $product){
+      $this->authorize('update', Product::class);
       $manufacturers = Manufacturer::all();
       $categories = Category::all();
       return view('products.edit', compact('product','manufacturers','categories'));
     }
 
     public function update(StoreProductRequest $request, Product $product){
+      $this->authorize('update', Product::class);
       $product->update([
         'title' => $request->input('title'),
         'description' => $request->input('description'),
